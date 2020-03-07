@@ -218,6 +218,218 @@ paths:
                       type: string
                     counter:
                       type: number
+  /meta/headers/redirect:
+    get:
+      summary: Redirect
+      description: Responds with an HTTP Location header.
+      operationId: get-meta-headers-redirect
+      responses:
+        302:
+          description: Status 302
+          headers:
+            Location:
+              schema:
+                type: string
+          content: {}
+  /meta/headers/pragma:
+    get:
+      summary: Pragma headers
+      description: Responds with an HTTP Pragma header containing multiple values.
+      operationId: get-meta-headers-pragma
+      responses:
+        200:
+          description: Status 200
+          headers:
+            Pragma:
+              schema:
+                type: array
+                items:
+                  type: string
+          content:
+            application/json:
+              schema:
+                type: number
+                description: Responds with a single number.
+  /meta/headers/echo:
+    get:
+      summary: Meta headers echo
+      description: Expects few HTTP headers in response and echoes their values back
+        as JSON.
+      operationId: get-meta-headers-echo
+      parameters:
+      - name: X-Oasis-Foo
+        in: header
+        required: true
+        schema:
+          type: string
+        example: 7H3-F00
+      - name: X-Oasis-Bar
+        in: header
+        schema:
+          type: string
+        example: 7H3-B4R
+      responses:
+        200:
+          description: Status 200
+          headers:
+            Pragma:
+              schema:
+                type: array
+                items:
+                  type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - bar
+                - foo
+                type: object
+                properties:
+                  bar:
+                    type: string
+                  foo:
+                    type: string
+                description: Echoes back the values of the `X-Oasis-Foo` & `X-Oasis-Bar`
+                  headers as JSON. Also as Pragma headers.
+  /meta/query/echo:
+    get:
+      summary: Query echo
+      description: Responds with an HTTP Pragma header containing multiple values.
+      operationId: get-meta-query-echo
+      parameters:
+      - name: the_foo
+        in: query
+        description: The Foo query string parameter
+        required: true
+        schema:
+          type: string
+        example: f00
+      - name: the_bar
+        in: query
+        description: The Bar query parameter.
+        required: true
+        schema:
+          type: string
+        example: b4r
+      responses:
+        200:
+          description: Status 200
+          headers:
+            Pragma:
+              schema:
+                type: array
+                items:
+                  type: string
+          content:
+            application/json:
+              schema:
+                type: number
+                description: Responds with a single number.
+  /x/meta/query/echo:
+    get:
+      summary: X Query echo
+      description: This operation has no examples to use for requests, and must trigger
+        an error in Oasis.
+      operationId: x-get-meta-query-echo
+      parameters:
+      - name: the_foo
+        in: query
+        description: The Foo query string parameter, no example.
+        required: true
+        schema:
+          type: string
+      - name: the_bar
+        in: query
+        description: The Bar query parameter, no example.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Status 200
+          headers:
+            Pragma:
+              schema:
+                type: array
+                items:
+                  type: string
+          content:
+            application/json:
+              schema:
+                type: number
+                description: Responds with a single number.
+  /x/meta/path/{UID}:
+    get:
+      summary: X Path
+      description: This operation has no examples to use for requests, and must trigger
+        an error in Oasis.
+      operationId: x-get-meta-path
+      parameters:
+      - name: UID
+        in: path
+        description: A User ID to use, without an example.
+        required: true
+        schema:
+          type: string
+      - name: the_foo
+        in: query
+        description: The Foo query string parameter
+        required: true
+        schema:
+          type: string
+      - name: the_bar
+        in: query
+        description: The Bar query parameter.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Status 200
+          content:
+            application/json:
+              schema:
+                type: number
+                description: Responds with a single number.
+  /x/meta/headers/echo:
+    get:
+      summary: X Meta headers echo
+      description: Expects few HTTP headers in response and echoes their values back
+        as JSON. Although has no example values for the headers.
+      operationId: x-get-meta-headers-echo
+      parameters:
+      - name: X-Oasis-Foo
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: X-Oasis-Bar
+        in: header
+        schema:
+          type: string
+      responses:
+        200:
+          description: Status 200
+          headers:
+            Pragma:
+              schema:
+                type: array
+                items:
+                  type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - bar
+                - foo
+                type: object
+                properties:
+                  bar:
+                    type: string
+                  foo:
+                    type: string
+                description: Echoes back the values of the `X-Oasis-Foo` & `X-Oasis-Bar`
+                  headers as JSON. Also as Pragma headers.
 components:
   schemas:
     User:
