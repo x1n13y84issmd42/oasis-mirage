@@ -65,7 +65,7 @@ export default {
 		])
 	},
 
-	visits_wrong: function(req: Request, resp: Response) {
+	visits_fail: function(req: Request, resp: Response) {
 		resp.status(200).json([
 			Visit_Fail(),
 			Visit(),

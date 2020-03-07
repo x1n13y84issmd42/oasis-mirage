@@ -5,8 +5,10 @@
   "main": "out/main.js",
   "scripts": {
     "build": "sh ./run/build",
+    "watch": "sh ./run/watch",
     "run": "sh ./run/app",
-    "start": "node out/app/main.js",
+    "start": "sh ./run/app",
+    "_start": "node out/app/main.js",
     "work": "node out/app/worker.js",
     "postinstall": "npm run build"
   },
