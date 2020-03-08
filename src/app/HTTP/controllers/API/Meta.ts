@@ -13,11 +13,21 @@ export default {
 	},
 
 	number: function(req: Request, resp: Response) {
-		resp.status(200).setHeader("X-Num", ["42"])
+		resp.status(200).setHeader("X-Num", ["3.1415"])
 		resp.end()
 	},
 
 	number_fail: function(req: Request, resp: Response) {
+		resp.status(200).setHeader("X-Num", ["A Pie!"])
+		resp.end()
+	},
+
+	integer: function(req: Request, resp: Response) {
+		resp.status(200).setHeader("X-Num", ["42"])
+		resp.end()
+	},
+
+	integer_fail: function(req: Request, resp: Response) {
 		resp.status(200).setHeader("X-Num", ["fourty two"])
 		resp.end()
 	},
