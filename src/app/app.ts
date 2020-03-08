@@ -46,5 +46,6 @@ export const numConcurrency: number = (function() {
 
 //	Logging
 export function log(m: string) {
-	return debug(`${CID} [${PID}] ${m}`);
+	// return debug(`${CID} [${PID}] ${m}`);
+	return debug(m);
 }

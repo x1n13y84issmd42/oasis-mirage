@@ -3,6 +3,8 @@ import Public from 'HTTP/controllers/API/Public';
 import Meta from 'HTTP/controllers/API/Meta';
 import Secure from 'HTTP/controllers/API/Secure';
 import * as HTTPAuth from 'HTTP/middleware/HTTP';
+import * as app from 'app';
+const log = app.log('router');
 
 const router: Router = Router();
 const publicRouter: Router = Router();
@@ -33,7 +35,7 @@ publicRouter.get("/meta/headers/boolean", Meta.boolean);
 publicRouter.get("/meta/headers/boolean/fail", Meta.boolean_fail);
 
 secureRouter.use((req: Request, resp: Response, next: Function) => {
-	console.log(`Authorization: ${req.headers.authorization}\n`);
+	log(`Authorization: ${req.headers.authorization}`);
 	next();
 });
 
