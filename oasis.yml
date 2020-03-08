@@ -394,7 +394,7 @@ paths:
   /x/meta/headers/echo:
     get:
       summary: X Meta headers echo
-      description: Expects few HTTP headers in response and echoes their values back
+      description: Expects few HTTP headers in request and echoes their values back
         as JSON. Although has no example values for the headers.
       operationId: x-get-meta-headers-echo
       parameters:

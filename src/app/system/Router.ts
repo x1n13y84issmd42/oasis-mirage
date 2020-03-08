@@ -16,6 +16,7 @@ export default function (app) {
 				log(err.name);
 				log(err.code);
 				log(err.message);
+				log(err);
 
 				resp.status(~~err.code || 500).json({
 					error: err.name,
