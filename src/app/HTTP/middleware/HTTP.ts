@@ -55,6 +55,7 @@ export function Digest(req: Request, resp: Response, next) {
 	resp.set('WWW-Authenticate', [
 		`Digest realm="${realm}"`,
 		// 'qop="auth,auth-int"',	//TODO
+		// 'algorithm=""',	//TODO
 		`nonce="${GenerateNonsense(32)}"`,
 		`opaque="${GenerateNonsense(32)}"`
 	].join(','));

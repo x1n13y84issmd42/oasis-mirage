@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import Public from 'HTTP/controllers/API/Public';
+import Data from 'HTTP/controllers/API/Data';
 import Meta from 'HTTP/controllers/API/Meta';
 import Secure from 'HTTP/controllers/API/Secure';
 import * as HTTPAuth from 'HTTP/middleware/HTTP';
@@ -10,20 +10,20 @@ const router: Router = Router();
 const publicRouter: Router = Router();
 const secureRouter: Router = Router();
 
-publicRouter.get("/object/user/:id", Public.user);
-publicRouter.get("/object/user/:id/fail", Public.user_fail);
+publicRouter.get("/object/user/:id", Data.user);
+publicRouter.get("/object/user/:id/fail", Data.user_fail);
 
-publicRouter.get("/array/users", Public.users);
-publicRouter.get("/array/users/fail", Public.users_fail);
-publicRouter.get("/array/strings", Public.strings);
-publicRouter.get("/array/numbers", Public.numbers);
-publicRouter.get("/array/visits", Public.visits);
-publicRouter.get("/array/visits/fail", Public.visits_fail);
+publicRouter.get("/array/users", Data.users);
+publicRouter.get("/array/users/fail", Data.users_fail);
+publicRouter.get("/array/strings", Data.strings);
+publicRouter.get("/array/numbers", Data.numbers);
+publicRouter.get("/array/visits", Data.visits);
+publicRouter.get("/array/visits/fail", Data.visits_fail);
 
-publicRouter.get("/primitive/string", Public.primitive_string);
-publicRouter.get("/primitive/number", Public.primitive_number);
-publicRouter.get("/primitive/boolean", Public.primitive_boolean);
-publicRouter.get("/primitive/date", Public.primitive_date);
+publicRouter.get("/primitive/string", Data.primitive_string);
+publicRouter.get("/primitive/number", Data.primitive_number);
+publicRouter.get("/primitive/boolean", Data.primitive_boolean);
+publicRouter.get("/primitive/date", Data.primitive_date);
 
 publicRouter.get("/meta/headers/redirect", Meta.redirect);
 publicRouter.get("/meta/headers/array", Meta.array);
