@@ -22,11 +22,33 @@ export default {
 	},
 
 	user: function(req: Request, resp: Response) {
-		resp.status(200).json(User())
+		if (req.params.id.match(/^\d+$/)) {
+			let user = User();
+			user.id = req.params.id;
+			resp.status(200).json(user);
+		} else {
+			resp.status(404).end();
+		}
 	},
 
 	user_fail: function(req: Request, resp: Response) {
 		resp.status(200).json(User_Fail())
+	},
+
+	post_user: function(req: Request, resp: Response) {
+		resp.status(201).json(User())
+	},
+	
+	post_user_fail_status: function(req: Request, resp: Response) {
+		resp.status(400).send("Bad Request").json(User())
+	},
+
+	post_user_fail_data: function(req: Request, resp: Response) {
+		resp.status(201).json(User_Fail())
+	},
+
+	put_user: function(req: Request, resp: Response) {
+		resp.status(200).json(User())
 	},
 
 	strings: function(req: Request, resp: Response) {

@@ -28,7 +28,7 @@ export default {
 	},
 
 	integer_fail: function(req: Request, resp: Response) {
-		resp.status(200).setHeader("X-Num", ["fourty two"])
+		resp.status(200).setHeader("X-Num", ["fourty something"])
 		resp.end()
 	},
 	
