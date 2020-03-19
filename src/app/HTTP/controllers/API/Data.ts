@@ -47,10 +47,6 @@ export default {
 		resp.status(201).json(User_Fail())
 	},
 
-	put_user: function(req: Request, resp: Response) {
-		resp.status(200).json(User())
-	},
-
 	strings: function(req: Request, resp: Response) {
 		resp.status(200).json([
 			faker.random.words(~~(Math.random() * 5)),

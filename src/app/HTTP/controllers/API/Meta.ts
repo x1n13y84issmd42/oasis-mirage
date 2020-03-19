@@ -41,4 +41,39 @@ export default {
 		resp.status(200).setHeader("X-Truth", ["who knows"])
 		resp.end()
 	},
+	
+	query_echo_headers: function(req: Request, resp: Response) {
+		if (!req.query.p1) return resp.status(400).send(`p1 query parameter is required`);
+		if (!req.query.p2) return resp.status(400).send(`p2 query parameter is required`);
+	
+		for (let qn in req.query) {
+			resp.setHeader(`x-${qn}`, req.query[qn])
+			console.log(`Added header x-${qn} from a query parameter ${qn} with a value of "${req.query[qn]}"`)
+		}
+		resp.status(200).end();
+	},
+	
+	query_echo_body: function(req: Request, resp: Response) {
+		if (!req.query.p1) return resp.status(400).send(`p1 query parameter is required`);
+		if (!req.query.p2) return resp.status(400).send(`p2 query parameter is required`);
+	
+		let res = {};
+		for (let qn in req.query) {
+			res[`prop_${qn}`] = req.query[qn];
+		}
+
+		resp.status(200).json(res);
+	},
+	
+	headers_echo_body: function(req: Request, resp: Response) {
+		if (!req.headers['x-header']) return resp.status(400).send(`x-header header is required`);
+		if (!req.headers['x-armer']) return resp.status(400).send(`x-armer header is required`);
+
+		let res = {};
+		for (let qn in req.headers) {
+			res[`prop_${qn.substr(2)}`] = req.headers[qn];
+		}
+
+		resp.status(200).json(res);
+	},
 }

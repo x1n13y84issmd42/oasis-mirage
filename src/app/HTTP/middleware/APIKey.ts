@@ -29,7 +29,6 @@ export function Header(headerName: string) {
 
 export function Query(paramName: string) {
 	return (req: Request, resp: Response, next: Function) => {
-		log(`Query:`, req.query);
 		return ValidateAPIKey(req.query[paramName], paramName, "query parameter", resp, next);
 	}
 }

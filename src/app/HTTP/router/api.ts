@@ -15,7 +15,6 @@ publicRouter.get("/object/user/:id", Data.user);
 publicRouter.get("/object/user/:id/fail", Data.user_fail);
 publicRouter.post("/object/user/:id", Data.post_user);
 publicRouter.post("/object/user/:id/fail/status", Data.post_user_fail_status);
-publicRouter.put("/object/user/:id", Data.put_user);
 
 publicRouter.get("/array/users", Data.users);
 publicRouter.get("/array/users/fail/schema", Data.users_fail);
@@ -37,6 +36,10 @@ publicRouter.get("/meta/headers/integer", Meta.integer);
 publicRouter.get("/meta/headers/integer/fail/schema", Meta.integer_fail);
 publicRouter.get("/meta/headers/boolean", Meta.boolean);
 publicRouter.get("/meta/headers/boolean/fail/schema", Meta.boolean_fail);
+
+publicRouter.get("/meta/query/echo/headers", Meta.query_echo_headers);
+publicRouter.get("/meta/query/echo/body", Meta.query_echo_body);
+publicRouter.get("/meta/headers/echo/body", Meta.headers_echo_body);
 
 secureRouter.use((req: Request, resp: Response, next: Function) => {
 	log(`Authorization: ${req.headers.authorization}`);
