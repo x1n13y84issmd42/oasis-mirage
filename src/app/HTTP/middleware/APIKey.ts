@@ -17,7 +17,7 @@ function ValidateAPIKey(key: string, name: string, location: string, resp: Respo
 
 export function Cookie(cookieName: string) {
 	return (req: Request, resp: Response, next: Function) => {
-		return next && next();
+		return ValidateAPIKey(req.cookies[cookieName], cookieName, "cookie", resp, next);
 	}
 }
 
