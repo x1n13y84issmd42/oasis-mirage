@@ -19,6 +19,8 @@ const credsBasic = Object.entries(users).map(kv => 'Basic ' + Buffer.from(`${kv[
  */
 export function Basic(req: Request, resp: Response, next) {
 	if (credsBasic.includes(req.headers.authorization)) {
+		let b64 = req.headers.authorization.substr(6)
+		log("Auth: " + Buffer.from(b64, 'base64').toString())
 		return next();
 	}
 

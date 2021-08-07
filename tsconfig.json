@@ -32,11 +32,11 @@
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
         
-		"target": "es6",
+		// "target": "es5",
 		"jsx": "react",
 
 		"lib": [
-			"dom",
+			// "dom",
 			"esnext",
 		]
 	}

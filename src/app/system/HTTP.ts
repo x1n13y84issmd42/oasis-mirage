@@ -7,7 +7,7 @@ const log = app.log('http');
 export default function (app) {
 
 	return () => {
-		return new Promise((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			
 			let port = process.env.PORT || 4000;
 

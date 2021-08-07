@@ -56,10 +56,17 @@ export default {
 	query_echo_body: function(req: Request, resp: Response) {
 		if (!req.query.p1) return resp.status(400).send(`p1 query parameter is required`);
 		if (!req.query.p2) return resp.status(400).send(`p2 query parameter is required`);
+
+		let casters = {
+			'p2': v => parseFloat(v)
+		}
+
+		let pass = v => v
 	
 		let res = {};
 		for (let qn in req.query) {
-			res[`prop_${qn}`] = req.query[qn];
+			let cast = casters[qn] || pass;
+			res[`prop_${qn}`] = cast(req.query[qn]);
 		}
 
 		resp.status(200).json(res);
@@ -69,9 +76,16 @@ export default {
 		if (!req.headers['x-header']) return resp.status(400).send(`x-header header is required`);
 		if (!req.headers['x-armer']) return resp.status(400).send(`x-armer header is required`);
 
+		let casters = {
+			'x-armer': v => ~~v
+		}
+
+		let pass = v => v
+
 		let res = {};
 		for (let qn in req.headers) {
-			res[`prop_${qn.substr(2)}`] = req.headers[qn];
+			let cast = casters[qn] || pass;
+			res[`prop_${qn.substr(2)}`] = cast(req.headers[qn]);
 		}
 
 		resp.status(200).json(res);

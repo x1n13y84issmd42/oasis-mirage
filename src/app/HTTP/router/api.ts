@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import Data from 'HTTP/controllers/API/Data';
 import Meta from 'HTTP/controllers/API/Meta';
+import Files from 'HTTP/controllers/API/Files';
 import Secure from 'HTTP/controllers/API/Secure';
 import * as HTTPAuth from 'HTTP/middleware/HTTP';
 import * as APIKey from 'HTTP/middleware/APIKey';
@@ -40,6 +41,8 @@ publicRouter.get("/meta/headers/boolean/fail/schema", Meta.boolean_fail);
 publicRouter.get("/meta/query/echo/headers", Meta.query_echo_headers);
 publicRouter.get("/meta/query/echo/body", Meta.query_echo_body);
 publicRouter.get("/meta/headers/echo/body", Meta.headers_echo_body);
+
+publicRouter.post("/files/upload/text", Files.uploadText);
 
 secureRouter.use((req: Request, resp: Response, next: Function) => {
 	log(`Authorization: ${req.headers.authorization}`);
